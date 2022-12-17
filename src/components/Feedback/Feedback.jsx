@@ -6,16 +6,27 @@ class Feedback extends Component {
     state = {
         good: 0,
         neutral: 0,
-        bad: 0
+        bad: 0,
     }
 
     onFeedbackBtnClick =(event) => {
         this.setState(
-            (prevState) => {
-                return {[event.target.value]: prevState[event.target.value]+1}
+            (prevState) => { 
+                return ( {[event.target.value]: prevState[event.target.value]+1} )         
             }
         )
     }     
+
+    countTotalFeedback = () => this.state.good + this.state.neutral + this.state.bad; 
+    
+
+    countPositiveFeedbackPercentage =() => {
+        if (this.state.good === 0) return "0%";
+        const avg = Math.floor( this.state.good / (this.state.good + this.state.neutral + this.state.bad) * 100);
+        return `${avg}%` 
+    }
+
+    
 
   render() {
     return <section className={css["feedback"]}>
@@ -28,6 +39,8 @@ class Feedback extends Component {
         <p>Good:<span className={css["stat-counter"]}>{this.state.good}</span></p>
         <p>Neutral:<span className={css["stat-counter"]}>{this.state.neutral}</span></p>
         <p>Bad:<span className={css["stat-counter"]}>{this.state.bad}</span></p>
+        <p>Total:<span className={css["stat-counter"]}>{this.countTotalFeedback()}</span></p>
+        <p>Positive feedback:<span className={css["stat-counter"]}>{this.countPositiveFeedbackPercentage()}</span></p>
     </section>;
   }
 }
