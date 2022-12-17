@@ -19,12 +19,11 @@ export class App extends Component {
     )
   }
   
-  countTotalFeedback = () => this.state.good + this.state.neutral + this.state.bad; 
-  //countTotalFeedback = () => this.state.good + this.state.neutral + this.state.bad; 
+  countTotalFeedback = () => Object.values(this.state).reduce((acc,el)=>{return acc+=el},0); 
     
   countPositiveFeedbackPercentage =() => {
     if (this.state.good === 0) return "0%";
-    const avg = Math.floor( this.state.good / (this.state.good + this.state.neutral + this.state.bad) * 100);
+    const avg = Math.floor( this.state.good / this.countTotalFeedback() * 100);
     return `${avg}%` 
   }
 
@@ -33,8 +32,8 @@ export class App extends Component {
 
     return (
       <div style={{padding: "1rem"}}>
-      <Section title="Welcome to Expresso cafe">
-              {/* motto="the best mix of an express train and a coffie drink" */}
+      <Section title="Welcome to Expresso cafe"
+               motto="the best mix of an express train and a coffie drink">
         <FeedbackOptions options={Object.keys(this.state)}
                          onLeaveFeedback={this.onFeedbackBtnClick}/>
       </Section>

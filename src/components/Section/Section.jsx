@@ -1,10 +1,10 @@
-//const Section = ( { title, motto, children } ) => {
-const Section = ( props ) => {
+const Section = ( { title, motto, children } ) => {
+//const Section = ( props ) => {
     return (
         <>
-            <h2>{props.title}</h2>
-            {/* <p>{props.motto}</p> */}
-            {props.children}
+            <h2>{title}</h2>
+            { motto && <p>{motto}</p> }
+            { children }
         </>
     )
 }
