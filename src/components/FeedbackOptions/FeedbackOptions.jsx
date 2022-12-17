@@ -1,7 +1,8 @@
 import css from "./FeedbackOptions.module.css";
 
 const FeedBackOptions = ({ options, onLeaveFeedback }) => {
-  console.log("Inside Feedback Options: ", options, onLeaveFeedback)
+
+  console.log("Inside Feedback Options: ", onLeaveFeedback)
   return (
       <>
         {options.map(el => {

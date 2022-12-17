@@ -1,4 +1,4 @@
-import { Component } from "react";
+import React,{ Component } from "react";
 import Section from "./Section/Section.jsx";
 import Statistics from "./Statistics/Statistics.jsx"
 import FeedbackOptions from "./FeedbackOptions/FeedbackOptions.jsx";
@@ -14,6 +14,7 @@ export class App extends Component {
   onFeedbackBtnClick =(event) => {
     this.setState(
         (prevState) => {
+            console.log("I'm working", this)
             return {[event.target.value]: prevState[event.target.value]+1}
         }
     )
@@ -28,22 +29,21 @@ export class App extends Component {
   }
 
   render() {
-    const options = Object.keys(this.state);
     const { good, neutral, bad } = this.state;
 
     return (
       <div style={{padding: "1rem"}}>
-      <Section title="Welcome to Expresso cafe" >
+      <Section title="Welcome to Expresso cafe">
               {/* motto="the best mix of an express train and a coffie drink" */}
-        <FeedbackOptions options={options} 
+        <FeedbackOptions options={Object.keys(this.state)}
                          onLeaveFeedback={this.onFeedbackBtnClick}/>
       </Section>
       <Section title="Statistics">
         <Statistics good={good} 
                     neutral={neutral} 
                     bad={bad} 
-                    total={this.countTotalFeedback()} 
-                    positivePercentage={this.countPositiveFeedbackPercentage()}/>  
+                    total={this.countTotalFeedback} 
+                    positivePercentage={this.countPositiveFeedbackPercentage}/>  
       </Section>
       </div>
     );

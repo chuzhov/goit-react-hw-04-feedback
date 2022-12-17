@@ -1,6 +1,5 @@
 //const Section = ( { title, motto, children } ) => {
 const Section = ( props ) => {
-    console.dir(props)
     return (
         <>
             <h2>{props.title}</h2>

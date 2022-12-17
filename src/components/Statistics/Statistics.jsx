@@ -5,8 +5,8 @@ const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
             <p>Good:<span className={css["stat-counter"]}>{good}</span></p>
             <p>Neutral:<span className={css["stat-counter"]}>{neutral}</span></p>
             <p>Bad:<span className={css["stat-counter"]}>{bad}</span></p>
-            <p>Total:<span className={css["stat-counter"]}>{total}</span></p>
-            <p>Positive feedback:<span className={css["stat-counter"]}>{positivePercentage}</span></p>
+            <p><b>Total:<span className={css["stat-counter"]}>{total()}</span></b></p>
+            <p>Positive feedback:<span className={css["stat-counter"]}>{positivePercentage()}</span></p>
         </div>
     )
 }
