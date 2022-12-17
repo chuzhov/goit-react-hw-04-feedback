@@ -14,13 +14,13 @@ export class App extends Component {
   onFeedbackBtnClick =(event) => {
     this.setState(
         (prevState) => {
-            console.log("I'm working", this)
             return {[event.target.value]: prevState[event.target.value]+1}
         }
     )
   }
   
   countTotalFeedback = () => this.state.good + this.state.neutral + this.state.bad; 
+  //countTotalFeedback = () => this.state.good + this.state.neutral + this.state.bad; 
     
   countPositiveFeedbackPercentage =() => {
     if (this.state.good === 0) return "0%";
