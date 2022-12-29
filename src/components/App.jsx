@@ -32,9 +32,6 @@ export const App = () => {
     }, 0);
 
   const countPositiveFeedbackPercentage = () => {
-    // if (stats.good === 0) return '0%';
-    // const avg = Math.floor((state.good / countTotalFeedback()) * 100);
-    // return `${avg}%`;
     return stats.good === 0
       ? '0%'
       : `${Math.floor((stats.good / countTotalFeedback()) * 100)}%`;
